@@ -64,9 +64,9 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/login").permitAll()
-
+                        .requestMatchers("/auth/login").permitAll() // Rota exata do Token
+                        .requestMatchers("/login/**").permitAll()    // Rota do Cadastro de usuário
+                        .requestMatchers("/error").permitAll()      // ESSENCIAL para não mascarar erros com 403
                         .anyRequest().authenticated()
                 )
 

@@ -30,14 +30,14 @@ public class TokenSecurity {
 
         UsernamePasswordAuthenticationToken authToken =
                 new UsernamePasswordAuthenticationToken(
-                        auth.username(),
+                        auth.userName(),
                         auth.password()
                 );
 
         authenticationManager.authenticate(authToken);
 
         UserDetails userDetails =
-                userDetailsService.loadUserByUsername(auth.username());
+                userDetailsService.loadUserByUsername(auth.userName());
 
         return new Token(jwtSecurity.generateToken(userDetails));
     }
