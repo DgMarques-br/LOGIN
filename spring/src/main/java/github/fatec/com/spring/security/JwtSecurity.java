@@ -24,13 +24,14 @@ public class JwtSecurity {
     }
 
     public String generateToken(UserDetails user) {
-
         Date now = new Date();
 
         return Jwts.builder()
                 .subject(user.getUsername())
                 .claim("roles", user.getAuthorities().stream()
                         .map(GrantedAuthority::getAuthority)
+
+                        .map(role -> role.replace("ROLE_", ""))
                         .toList())
                 .issuedAt(now)
                 .expiration(new Date(now.getTime() + EXP))

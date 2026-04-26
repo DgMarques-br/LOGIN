@@ -50,7 +50,7 @@ public class ControllerLogin {
 
         var login = adapter.toDomain(request);
 
-        // 🔐 criptografa senha também no update
+
         var loginAtualizado = new github.fatec.com.entity.Login(
                 id,
                 login.userName(),
